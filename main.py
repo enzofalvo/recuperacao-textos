@@ -14,6 +14,8 @@ url = "https://coldplay.fandom.com/wiki/Coldplay"
 informacoes_pagina = requests.get(url)
 html = BeautifulSoup(informacoes_pagina.text, 'html.parser')
 
+print('Apontando para a página: \n', html)
+
 # Enzo Falvo
 # b) O texto desta página deverá ser transformado em um array de senteças.
 contador = 1
