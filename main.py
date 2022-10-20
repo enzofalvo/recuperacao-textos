@@ -4,6 +4,7 @@
 
 from bs4 import BeautifulSoup
 import requests
+import spacy
 
 sentenca = ''
 
@@ -39,14 +40,15 @@ print('Apontando para a página: \n', html3)
 print('Apontando para a página: \n', html4)
 print('Apontando para a página: \n', html5)
 
-
 # Enzo Falvo
 # b) O texto desta página deverá ser transformado em um array de senteças.
+dicts = spacy.load('en_core_web_sm')
+
 
 def get_sentencas(lista_sentencas, html):
     contador = 1
     for sentenca in html.find_all("p"):
-        lista_sentencas.append(sentenca.get_text())
+        lista_sentencas.append(dicts(sentenca.get_text()))
         print('Sentença número', contador, ':', sentenca.get_text())
         contador += 1
     return lista_sentencas
